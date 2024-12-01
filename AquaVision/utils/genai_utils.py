@@ -109,9 +109,9 @@ def generate(state: GraphState):
     question = state["question"]
     documents = state["documents"]
     water_data = state["water_data"]
-    predictions = state["predictions"]
+    predictions = state.get("predictions", "")
 
-    prediction_made = predictions is not None and len(predictions) > 0
+    prediction_made = predictions is not None and len(str(predictions)) > 0
 
     # Prompt engineering for the water management expert persona
     system = """You are AquaVision, an advanced water management expert. Your task is to generate a detailed, comprehensive answer/report in response to the user's query using markdown format. You should consider the following elements:
